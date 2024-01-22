@@ -19,7 +19,11 @@ import {
     :config="{ endpoint: 'e2', output: { baz: 'qux' } }"
   />
 
-  <span>These are all invalid</span>
+  <span>
+    These are all invalid, output doens't match the endpoint. BUT THEY STILL
+    ARE, since the output is just a union of all possible outputs, that doesn't
+    get narrowed by the endpoint prop which should be bound by the generic
+  </span>
   <MyGeneratedComponentBoundToRouter
     :config="{ endpoint: 'e2', output: { foo: 'bar' } }"
   />
