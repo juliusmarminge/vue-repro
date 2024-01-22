@@ -72,3 +72,27 @@ export const GenericComponentForAnyRouter = <TRouter extends AnyRouter>() =>
 
 export const MyGeneratedComponentBoundToRouter =
   GenericComponentForAnyRouter<MyRouter>();
+
+export const TestInJSX = defineComponent(() => {
+  return () => (
+    <div>
+      <MyGeneratedComponentBoundToRouter
+        // here we don't have any autocompletion
+        config={{ endpoint: "e1", output: {} }}
+      />
+
+      <GenericCompBoundToRouter
+        // okay!
+        config={{ endpoint: "e1", output: { foo: "bar" } }}
+      />
+      <GenericCompBoundToRouter
+        // okay!
+        config={{ endpoint: "e2", output: { baz: "qux" } }}
+      />
+      <GenericCompBoundToRouter
+        // we still got autocompletion on `baz` here, even if it shows a (correct) typeerro in the end
+        config={{ endpoint: "e1", output: { baz: "qux" } }}
+      />
+    </div>
+  );
+});
