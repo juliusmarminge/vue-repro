@@ -1,1 +1,4 @@
-export { Comp, GenericComp } from "./Component";
+export {
+  GenericCompBoundToRouter,
+  GenericComponentForAnyRouter,
+} from "./Component";
